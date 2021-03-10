@@ -1,6 +1,8 @@
 #include "GhostSpawner.h"
 #include "Ghost.h"
+#include <string>
 
+string colors[]= {"red", "pink","cyan", "orange"};
 GhostSpawner::GhostSpawner(int x, int y, int width, int height, EntityManager* em, ofImage sprite) : Entity(x, y, width, height){
     this->em = em;
     this->sprite = sprite;
@@ -34,6 +36,7 @@ void GhostSpawner::spawnGhost(string color){
 
 void GhostSpawner::keyPressed(int key){
     if(key == 'g'){
-        spawnGhost("red");
+        int x = ofRandom(0,3);
+        spawnGhost(colors[x]);
     }
 }
