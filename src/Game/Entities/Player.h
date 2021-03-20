@@ -1,9 +1,9 @@
 #pragma once
 #include "Animation.h"
-
+#include "Powerup.h"
 #include "EntityManager.h"
 
-class Player: public Entity{
+class Player: public Entity, public PowerUp{
 
     private:
         int spawnX, spawnY;
@@ -37,4 +37,5 @@ class Player: public Entity{
         void setFacing(FACING facing);
         void checkCollisions();
         void die();
+        void activate();
 };

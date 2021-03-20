@@ -62,6 +62,10 @@ void Player::tick(){
     }
 }
 
+void Player::activate(){
+//code here
+}
+
 void Player::render(){
     ofSetColor(256,256,256);
     // ofDrawRectangle(getBounds());
@@ -105,6 +109,10 @@ void Player::keyPressed(int key){
             if(this->getHealth()<3){
             health++;
             }
+            break;
+        
+        case ' ':
+            activate();
             break;
     }
 }
