@@ -1,7 +1,7 @@
-#include "MenuState.h"
+#include "WinState.h"
 
 
-MenuState::MenuState() {
+WinState::WinState() {
 	startButton = new Button(ofGetWidth()/2, ofGetHeight()/2, 64, 50, "Start");
 	img1.load("images/pacman.png");
 	vector<ofImage> rightAnimframes;
@@ -13,7 +13,7 @@ MenuState::MenuState() {
 	anim = new Animation(10,rightAnimframes);
 
 }
-void MenuState::tick() {
+void WinState::tick() {
 	startButton->tick();
 	anim->tick();
 	if(startButton->wasPressed()){
@@ -22,8 +22,8 @@ void MenuState::tick() {
 
 	}
 }
-void MenuState::render() {
-	ofDrawBitmapString("Pacman Project", ofGetWidth()/2, ofGetHeight()/2-300, 50);
+void WinState::render() {
+	ofDrawBitmapString("You Won, Idiot", ofGetWidth()/2, ofGetHeight()/2-300, 50);
 	ofSetBackgroundColor(0, 0, 0);
 	ofSetColor(256, 256, 256);
 	anim->getCurrentFrame().draw(ofGetWidth()/2, ofGetHeight()/2-100, 100, 100);
@@ -32,28 +32,21 @@ void MenuState::render() {
 
 }
 
-void MenuState::keyPressed(int key){
-//this works:
-	switch(key){
-		case 'p':
-		setNextState("Game");
-		setFinished(true);
-		break;
-	}
+void WinState::keyPressed(int key){
 	
 }
 
-void MenuState::mousePressed(int x, int y, int button){
+void WinState::mousePressed(int x, int y, int button){
 	startButton->mousePressed(x, y);
 }
 
-void MenuState::reset(){
+void WinState::reset(){
 	setFinished(false);
 	setNextState("");
 	startButton->reset();
 }
 
-MenuState::~MenuState(){
+WinState::~WinState(){
 	delete startButton;
 	delete anim;
 }

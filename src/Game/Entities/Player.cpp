@@ -177,7 +177,14 @@ void Player::checkCollisions(){
                 score += 10;
             }
             if(dynamic_cast<BigDot*>(entity)){
+                score +=10;            if(dynamic_cast<Dot*>(entity) || dynamic_cast<BigDot*>(entity)){
+                entity->remove = true;
+                score += 10;
+            }
+            if(dynamic_cast<BigDot*>(entity)){
                 score +=10;
+                em->setKillable(true);
+            }
                 em->setKillable(true);
             }
         }

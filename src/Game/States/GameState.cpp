@@ -18,13 +18,23 @@ void GameState::tick() {
 		finalScore = map->getPlayer()->getScore();
 		map->getPlayer()->setScore(0);
 	}
+	if (map->getPlayer()->getScore() >= getMaxScore()){
+		setNextState("Win");
+		setFinished(true);
+		map->getPlayer()->setScore(0);
+	}
 }
+
 void GameState::render() {
 	map->render();
 }
 
 void GameState::keyPressed(int key){
 	map->keyPressed(key);
+	if(key =='y'){
+		setNextState("Win");
+		setFinished(true);
+	}
 }
 
 void GameState::mousePressed(int x, int y, int button){
@@ -33,7 +43,7 @@ void GameState::mousePressed(int x, int y, int button){
 
 void GameState::keyReleased(int key){
 	map->keyReleased(key);
-}
+	}
 
 void GameState::reset(){
 	setFinished(false);
@@ -42,6 +52,11 @@ void GameState::reset(){
 
 int GameState::getFinalScore(){
 	return finalScore;
+}
+
+int GameState::getMaxScore(){
+	int maxScore = 200;
+	return maxScore;
 }
 
 GameState::~GameState(){
