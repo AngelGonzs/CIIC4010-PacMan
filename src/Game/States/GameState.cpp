@@ -1,5 +1,4 @@
 #include "GameState.h"
-#include "Entity.h"
 
 GameState::GameState() {
 	music.load("music/pacman_chomp.wav");
@@ -18,7 +17,7 @@ void GameState::tick() {
 		finalScore = map->getPlayer()->getScore();
 		map->getPlayer()->setScore(0);
 	}
-	if (map->getPlayer()->getScore() >= getMaxScore()){
+	if (map->getPlayer()->getScore() >= map->getPlayer()->getMaxScore()){
 		setNextState("Win");
 		setFinished(true);
 		map->getPlayer()->setScore(0);
@@ -27,6 +26,8 @@ void GameState::tick() {
 
 void GameState::render() {
 	map->render();
+	const int maxim = map->getPlayer()->getMaxScore();
+	ofDrawBitmapString("Max Score: " + to_string(maxim), ofGetWidth()/2, ofGetHeight()/2);
 }
 
 void GameState::keyPressed(int key){
@@ -52,11 +53,6 @@ void GameState::reset(){
 
 int GameState::getFinalScore(){
 	return finalScore;
-}
-
-int GameState::getMaxScore(){
-	int maxScore = 200;
-	return maxScore;
 }
 
 GameState::~GameState(){

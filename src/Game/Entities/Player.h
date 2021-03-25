@@ -8,7 +8,10 @@ class Player: public Entity, public PowerUp{
     private:
         int spawnX, spawnY;
         int health=3;
+
         int score=0;
+        int maxScore=0;
+
         bool canMove;
         int speed = 8;
         bool walking = false;
@@ -25,8 +28,11 @@ class Player: public Entity, public PowerUp{
         ~Player();
         int getHealth();
         void setHealth(int);
+
         int getScore();
         void setScore(int);
+        int getMaxScore();
+
         void tick();
         void render();
         void keyPressed(int);

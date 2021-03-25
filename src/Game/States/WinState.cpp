@@ -23,7 +23,7 @@ void WinState::tick() {
 	}
 }
 void WinState::render() {
-	ofDrawBitmapString("You Won, Idiot", ofGetWidth()/2, ofGetHeight()/2-300, 50);
+	ofDrawBitmapString("You Won, Cool, ok", ofGetWidth()/2, ofGetHeight()/2-300, 50);
 	ofSetBackgroundColor(0, 0, 0);
 	ofSetColor(256, 256, 256);
 	anim->getCurrentFrame().draw(ofGetWidth()/2, ofGetHeight()/2-100, 100, 100);

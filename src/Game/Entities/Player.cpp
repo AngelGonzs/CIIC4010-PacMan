@@ -204,6 +204,16 @@ void Player::checkCollisions(){
     
 }
 
+int Player::getMaxScore(){
+    maxScore = 0;
+	for(Entity* entity: em->entities){
+		if(dynamic_cast<Dot*>(entity) || dynamic_cast<BigDot*>(entity)){
+    		maxScore += 10;
+   }
+}
+	return maxScore + this->getScore();
+}
+
 void Player::die(){
     health--;
     x = spawnX;
