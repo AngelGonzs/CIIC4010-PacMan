@@ -12,8 +12,14 @@ public:
 	void tick();
 	void render();
 	void setKillable(bool);
+	void setOver500(bool);
+	//for testing purposes:
+	bool getOver500();
+	
 
 private:
 	bool killable = false;
+	bool scoreOver500 = false;
 	int killableCounter;
+
 };

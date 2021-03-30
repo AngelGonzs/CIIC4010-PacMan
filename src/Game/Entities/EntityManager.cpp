@@ -66,6 +66,16 @@ void EntityManager::setKillable(bool k){
     }
 }
 
+//------------------NEW-------------------
+void EntityManager::setOver500(bool k){
+    scoreOver500 = k;
+}
+
+bool EntityManager::getOver500(){
+    return scoreOver500;
+}
+//Not new:
+
 EntityManager::~EntityManager(){
     for(Entity* e: BoundBlocks){
         delete e;
