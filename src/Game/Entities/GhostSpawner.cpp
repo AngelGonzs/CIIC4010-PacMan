@@ -36,7 +36,7 @@ void GhostSpawner::spawnGhost(string color){
 
 void GhostSpawner::keyPressed(int key){
     if(key == 'g'){
-        int x = ofRandom(0,3);
+        int x = ofRandom(0,4);
         spawnGhost(colors[x]);
     }
 }
