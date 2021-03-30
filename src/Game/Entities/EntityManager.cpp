@@ -67,13 +67,19 @@ void EntityManager::setKillable(bool k){
 }
 
 //------------------NEW-------------------
-void EntityManager::setOver500(bool k){
-    scoreOver500 = k;
-}
+void EntityManager::setOver500(bool k){ scoreOver500 = k;}
+bool EntityManager::getOver500(){ return scoreOver500; }
 
-bool EntityManager::getOver500(){
-    return scoreOver500;
-}
+void EntityManager::setRGDead(bool k){ rgIsDead = k; }
+bool EntityManager::getRGDead(){ return rgIsDead; }
+
+void EntityManager::setPlayerX(int x){ playerX = x;}
+int EntityManager::getPlayerX(){ return playerX; }
+
+void EntityManager::setPlayerY(int y){ playerY = y;}
+int EntityManager::getPlayerY(){ return playerY; }
+
+
 //Not new:
 
 EntityManager::~EntityManager(){

@@ -10,6 +10,7 @@ class Ghost: public Entity{
         void render();
         bool getKillable();
         void setKillable(bool);
+
     private:
         bool killable = false;
         FACING facing = UP;
@@ -17,7 +18,11 @@ class Ghost: public Entity{
         bool justSpawned=true;
         void checkCollisions();
         int speed=3;
-        EntityManager* em;
         Animation* killableAnim;
+    
+//moved em here so that RandomGhost can use it.
+    protected:
+        EntityManager* em;
+
 
 };

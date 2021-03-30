@@ -31,8 +31,10 @@ void RandomGhost::replaceDot(int x, int y){
 
                 if(xTrue && yTrue){
                     found = true;
+                    setX(dot->getX());
+                    setY(dot->getY());
+                    dot->remove = true;
                 }
             }
         }
     }
-

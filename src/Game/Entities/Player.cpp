@@ -4,6 +4,8 @@
 #include "BigDot.h"
 #include "Ghost.h"
 
+#include "RandomGhost.h"
+
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     spawnX = x;
     spawnY = y;
@@ -194,9 +196,10 @@ void Player::checkCollisions(){
             Ghost* ghost = dynamic_cast<Ghost*>(entity);
             if(ghost->getKillable()){
                 ghost->remove = true;
-            }else{
-                die();
-
+            }
+            else{ die(); }
+            if(RandomGhost* rg = dynamic_cast<RandomGhost*>(entity)){
+                em->setRGDead(true);
             }
         }
     }
@@ -220,6 +223,8 @@ the ghost away from the players
 current position*/
 int Player::getX(){ return x; }
 int Player::getY(){ return y; }
+
+EntityManager* Player::getEM(){ return em; }
 
 void Player::die(){
     health--;

@@ -48,4 +48,5 @@ class Player: public Entity, public PowerUp{
 
         int getX();
         int getY();
+        EntityManager* getEM();
 };

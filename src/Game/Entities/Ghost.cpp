@@ -23,6 +23,9 @@ Ghost::Ghost(int x, int y, int width, int height, ofImage spriteSheet, EntityMan
     }else if(color=="orange"){
         sprite.cropFrom(spriteSheet,456,113,16,16);
     }
+    if(color=="random"){
+        sprite.cropFrom(spriteSheet,632,113,16,16);
+    }
 
 }
 

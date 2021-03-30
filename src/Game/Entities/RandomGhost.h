@@ -10,6 +10,8 @@ class RandomGhost: public Ghost{
 
         void replaceDot(int,int);
 
+
     private:
         bool found = false;
+        bool isDead = true;
 };

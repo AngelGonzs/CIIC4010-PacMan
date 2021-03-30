@@ -1,5 +1,6 @@
 #include "GhostSpawner.h"
 #include "Ghost.h"
+#include "RandomGhost.h"
 #include <string>
 
 string colors[]= {"red", "pink","cyan", "orange"};
@@ -28,10 +29,28 @@ void GhostSpawner::tick(){
             spawnCounter--;
         }
     }
+
+    if(em->getRGDead()){
+        spawnGhost("random");
+    }
 }
+
+
 void GhostSpawner::spawnGhost(string color){
-    Ghost* g = new Ghost(x,y,width-2,height-2,sprite,em, color);
-    em->ghosts.push_back(g);
+    if(color != "random"){
+        Ghost* g = new Ghost(x,y,width-2,height-2,sprite,em, color);
+        em->ghosts.push_back(g);
+    }
+    else if(em->getOver500() && color == "random"){
+        RandomGhost* rg = new RandomGhost(x,y,width-2,height-2,sprite,em, color);
+        int x = em->getPlayerX();
+        int y = em->getPlayerY();
+        rg->replaceDot(x,y);
+        em->setRGDead(false);
+
+        Ghost* g = rg;
+        em->ghosts.push_back(g);
+    }
 }
 
 void GhostSpawner::keyPressed(int key){

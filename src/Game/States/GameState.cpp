@@ -22,12 +22,29 @@ void GameState::tick() {
 		setFinished(true);
 		map->getPlayer()->setScore(0);
 	}
+
+	if(map->getPlayer()->getScore() >= 500){
+		map->getPlayer()->getEM()->setOver500(true);
+	}
+
+	//copying players location to EntityManager variable:
+	map->getPlayer()->getEM()->setPlayerX(map->getPlayer()->getX());
+	map->getPlayer()->getEM()->setPlayerY(map->getPlayer()->getY());
+	
+
 }
 
 void GameState::render() {
 	map->render();
 	const int maxim = map->getPlayer()->getMaxScore();
 	ofDrawBitmapString("Max Score: " + to_string(maxim), ofGetWidth()/2, ofGetHeight()/2);
+	ofDrawBitmapString(to_string(map->getPlayer()->getX()), ofGetWidth()/2 + 200 , ofGetHeight()/2 - 200);
+	ofDrawBitmapString(to_string(map->getPlayer()->getY()), ofGetWidth()/2 + 200 , ofGetHeight()/2 - 250);
+
+	if(map->getPlayer()->getEM()->getOver500()){
+		ofDrawBitmapString("true", ofGetWidth()/2 + 300, ofGetHeight()/2 );
+	}
+	else{ofDrawBitmapString("false", ofGetWidth()/2 + 300, ofGetHeight()/2 );}
 }
 
 void GameState::keyPressed(int key){
