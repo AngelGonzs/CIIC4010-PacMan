@@ -15,6 +15,7 @@ class Player: public Entity, public PowerUp{
         bool canMove;
         int speed = 8;
         bool walking = false;
+                
         FACING facing = DOWN;
         ofImage up, down, left, right;
         Animation *walkUp;
@@ -44,4 +45,7 @@ class Player: public Entity, public PowerUp{
         void checkCollisions();
         void die();
         void activate();
+
+        int getX();
+        int getY();
 };

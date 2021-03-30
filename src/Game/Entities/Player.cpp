@@ -214,6 +214,13 @@ int Player::getMaxScore(){
 	return maxScore + this->getScore();
 }
 
+/*getters for the RandomGhost 
+set with the intention to spawn
+the ghost away from the players
+current position*/
+int Player::getX(){ return x; }
+int Player::getY(){ return y; }
+
 void Player::die(){
     health--;
     x = spawnX;
