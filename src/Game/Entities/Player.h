@@ -44,9 +44,13 @@ class Player: public Entity, public PowerUp{
         void setFacing(FACING facing);
         void checkCollisions();
         void die();
-        void activate();
+        void activate(string);
 
         int getX();
         int getY();
+
+        void setX(int);
+        void setY(int);
+
         EntityManager* getEM();
 };

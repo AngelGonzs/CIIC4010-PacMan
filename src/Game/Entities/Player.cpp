@@ -64,9 +64,6 @@ void Player::tick(){
     }
 }
 
-void Player::activate(){
-//code here
-}
 
 void Player::render(){
     ofSetColor(256,256,256);
@@ -114,7 +111,7 @@ void Player::keyPressed(int key){
             break;
         
         case ' ':
-            activate();
+            activate("nathan");
             break;
     }
 }
@@ -200,6 +197,7 @@ void Player::checkCollisions(){
             else{ die(); }
             if(RandomGhost* rg = dynamic_cast<RandomGhost*>(entity)){
                 em->setRGDead(true);
+                activate("RANDOM");
             }
         }
     }
@@ -224,6 +222,9 @@ current position*/
 int Player::getX(){ return x; }
 int Player::getY(){ return y; }
 
+void Player::setX(int equis){ x = equis; }
+void Player::setY(int lle){ y = lle; }
+
 EntityManager* Player::getEM(){ return em; }
 
 void Player::die(){
@@ -238,4 +239,21 @@ Player::~Player(){
     delete walkDown;
     delete walkLeft;
     delete walkRight;
+}
+
+void Player::activate(string power){
+    bool finder = false;
+    if(power == "RANDOM"){
+        int randInt = ofRandom(0, em->entities.size());
+        Entity* entity = em->entities[randInt];
+        while(!finder){
+            if(Dot* dot = dynamic_cast<Dot*>(entity)){
+                setX(dot->getX());
+                setY(dot->getY());
+                dot->remove = true;
+                finder = true;
+            }
+
+    }
+}
 }
