@@ -2,6 +2,7 @@
 #include "Animation.h"
 #include "Powerup.h"
 #include "EntityManager.h"
+#include "RandomPowerup.h"
 
 class Player: public Entity, public PowerUp{
 
@@ -44,7 +45,9 @@ class Player: public Entity, public PowerUp{
         void setFacing(FACING facing);
         void checkCollisions();
         void die();
-        void activate(string);
+
+        void activate();
+        void RandomActivate();
 
         int getX();
         int getY();
