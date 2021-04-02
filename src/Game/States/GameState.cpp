@@ -30,6 +30,9 @@ void GameState::tick() {
 	//copying players location to EntityManager variable:
 	map->getPlayer()->getEM()->setPlayerX(map->getPlayer()->getX());
 	map->getPlayer()->getEM()->setPlayerY(map->getPlayer()->getY());
+
+	//copying player's score to EntityManager
+	map->getPlayer()->getEM()->setPlayerScore(map->getPlayer()->getScore());
 	
 
 }

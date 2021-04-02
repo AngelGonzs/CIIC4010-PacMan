@@ -79,6 +79,11 @@ int EntityManager::getPlayerX(){ return playerX; }
 void EntityManager::setPlayerY(int y){ playerY = y;}
 int EntityManager::getPlayerY(){ return playerY; }
 
+void EntityManager::setPlayerScore(int score){ playerScore = score; }
+int EntityManager::getPlayerScore(){ return playerScore; }
+
+
+
 
 //Not new:
 

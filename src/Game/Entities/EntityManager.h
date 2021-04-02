@@ -25,14 +25,20 @@ public:
 
 	void setRGDead(bool);
 	bool getRGDead();
+
+	void setPlayerScore(int);
+	int getPlayerScore();
 	
 
 private:
 	bool killable = false;
 	bool scoreOver500 = false;
 	bool rgIsDead = true;
+
 	int killableCounter;
 	int playerX;
 	int playerY;
+
+	int playerScore;
 
 };
