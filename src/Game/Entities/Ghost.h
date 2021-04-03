@@ -12,17 +12,18 @@ class Ghost: public Entity{
         void setKillable(bool);
 
     private:
-        bool killable = false;
         FACING facing = UP;
         bool canMove = true;
         bool justSpawned=true;
         void checkCollisions();
         int speed=3;
-        Animation* killableAnim;
+        
     
-//moved em here so that RandomGhost can use it.
+//moved em here so that RandomGhost (and PeekABooGhost) can use it.
     protected:
         EntityManager* em;
+        Animation* killableAnim;
+        bool killable = false;
 
 
 };

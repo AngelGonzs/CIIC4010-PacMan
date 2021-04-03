@@ -5,6 +5,7 @@
 #include "Ghost.h"
 
 #include "RandomGhost.h"
+#include "PeekABooGhost.h"
 
 Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(x, y, width, height){
     spawnX = x;
@@ -193,12 +194,16 @@ void Player::checkCollisions(){
             Ghost* ghost = dynamic_cast<Ghost*>(entity);
             if(ghost->getKillable()){
                 ghost->remove = true;
+            
+                if(RandomGhost* rg = dynamic_cast<RandomGhost*>(entity)){
+                em->setRGDead(true);
+                RandomActivate(); }
+
+                if(PeekABooGhost* pb = dynamic_cast<PeekABooGhost*>(entity)){
+                em->setPBDead(true); }
+                
             }
             else{ die(); }
-            if(RandomGhost* rg = dynamic_cast<RandomGhost*>(entity)){
-                em->setRGDead(true);
-                RandomActivate();
-            }
         }
     }
 

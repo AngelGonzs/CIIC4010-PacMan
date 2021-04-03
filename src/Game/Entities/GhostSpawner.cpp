@@ -1,6 +1,7 @@
 #include "GhostSpawner.h"
 #include "Ghost.h"
 #include "RandomGhost.h"
+#include "PeekABooGhost.h"
 #include <string>
 
 string colors[]= {"red", "pink","cyan", "orange"};
@@ -33,11 +34,15 @@ void GhostSpawner::tick(){
     if(em->getRGDead()){
         spawnGhost("random");
     }
+
+    if(em->getPBDead()){
+        spawnGhost("PeekABoo");
+    }
 }
 
 
 void GhostSpawner::spawnGhost(string color){
-    if(color != "random"){
+    if(color != "random" && color != "PeekABoo"){
         Ghost* g = new Ghost(x,y,width-2,height-2,sprite,em, color);
         em->ghosts.push_back(g);
     }
@@ -49,6 +54,16 @@ void GhostSpawner::spawnGhost(string color){
         em->setRGDead(false);
 
         Ghost* g = rg;
+        em->ghosts.push_back(g);
+    }
+    else if(em->getPlayerScore() >= 1000 && color == "PeekABoo"){
+        PeekABooGhost* pb = new PeekABooGhost(x,y,width-2,height-2,sprite,em, color, 0);
+        int x = em->getPlayerX();
+        int y = em->getPlayerY();
+        pb->findPlayer(x,y);
+        em->setPBDead(false);
+
+        Ghost* g = pb;
         em->ghosts.push_back(g);
     }
 }

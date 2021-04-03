@@ -73,6 +73,9 @@ bool EntityManager::getOver500(){ return scoreOver500; }
 void EntityManager::setRGDead(bool k){ rgIsDead = k; }
 bool EntityManager::getRGDead(){ return rgIsDead; }
 
+void EntityManager::setPBDead(bool k){ pbIsDead = k; }
+bool EntityManager::getPBDead(){ return pbIsDead; }
+
 void EntityManager::setPlayerX(int x){ playerX = x;}
 int EntityManager::getPlayerX(){ return playerX; }
 
