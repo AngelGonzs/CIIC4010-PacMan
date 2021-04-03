@@ -2,7 +2,8 @@
 
 PeekABooGhost::PeekABooGhost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager* em, string color, int alpha): Ghost(x, y, width, height,spriteSheet, em, color){
     color = "PeekABoo";
-    sprite.cropFrom(spriteSheet,632,113,16,16);
+    amogus.load("images/AmogusR.png");
+    sprite.cropFrom(amogus,0,0,16,16);
     this->alpha = alpha;
 }
 

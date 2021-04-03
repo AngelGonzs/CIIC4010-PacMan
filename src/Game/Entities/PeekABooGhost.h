@@ -20,4 +20,5 @@ class PeekABooGhost: public Ghost{
         bool visible = false;
         bool isDead = true;
         int alpha = 0;
+        ofImage amogus;
 };
