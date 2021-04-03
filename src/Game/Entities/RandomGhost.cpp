@@ -4,7 +4,14 @@
 
 RandomGhost::RandomGhost(int x, int y, int width, int height, ofImage spriteSheet, EntityManager* em, string color): Ghost(x, y, width, height,spriteSheet, em, color){
     color = "random";
-    sprite.cropFrom(spriteSheet,632,113,16,16);
+    rand.load("images/RandGhost.png");
+    froggy.load("images/FroggyGhost.png");
+
+    RandGhosts.push_back(rand);
+    RandGhosts.push_back(froggy);
+
+    int pick = ofRandom(RandGhosts.size());
+    sprite.cropFrom(RandGhosts[pick],0 ,0,16,16);
 }
 
 void RandomGhost::setX(int equis){

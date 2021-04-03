@@ -1,6 +1,7 @@
 #pragma once
 #include "Ghost.h"
 #include "EntityManager.h"
+#include <vector>
 
 class RandomGhost: public Ghost{
     public:
@@ -14,4 +15,8 @@ class RandomGhost: public Ghost{
     private:
         bool found = false;
         bool isDead = true;
+        vector<ofImage> RandGhosts;
+        ofImage rand;
+        ofImage froggy;
+
 };
