@@ -56,6 +56,10 @@ void GameState::keyPressed(int key){
 		setNextState("Win");
 		setFinished(true);
 	}
+	if(key == 'p'){
+		setNextState("Pause");
+		setFinished(true);
+	}
 }
 
 void GameState::mousePressed(int x, int y, int button){
@@ -71,6 +75,7 @@ void GameState::reset(){
 	setNextState("");
 	map = MapBuilder().createMap(mapImage);
 }
+
 
 int GameState::getFinalScore(){
 	return finalScore;
