@@ -15,13 +15,14 @@ void PeekABooGhost::setAlpha(int a){ alpha = a; }
 
 
 void PeekABooGhost::render(){
-        if(killable){
+    int xP = em->getPlayerX();
+    int yP = em->getPlayerY();
+    findPlayer(xP,yP);
+    ofSetColor(255, getAlpha());
+    
+    if(killable){
         killableAnim->getCurrentFrame().draw(x,y,width,height);
     }else{
-        int xP = em->getPlayerX();
-        int yP = em->getPlayerY();
-        findPlayer(xP,yP);
-        ofSetColor(255, getAlpha());
         sprite.draw(x,y,width, height);
     }
 }
