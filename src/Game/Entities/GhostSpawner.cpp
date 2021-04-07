@@ -46,7 +46,7 @@ void GhostSpawner::spawnGhost(string color){
         Ghost* g = new Ghost(x,y,width-2,height-2,sprite,em, color);
         em->ghosts.push_back(g);
     }
-    else if(em->getOver500() && color == "random"){
+    else if(em->getPlayerScore() >= 500 && color == "random"){
         RandomGhost* rg = new RandomGhost(x,y,width-2,height-2,sprite,em, color);
         int x = em->getPlayerX();
         int y = em->getPlayerY();

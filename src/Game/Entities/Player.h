@@ -10,6 +10,9 @@ class Player: public Entity, public PowerUp{
         int spawnX, spawnY;
         int health=3;
 
+        int randomPoweups = 0; //counter for RandomPowerUps, to regulate random activate.
+        vector<string> powerups; //vector to detect what 
+
         int score=0;
         int maxScore=0;
 
@@ -46,6 +49,7 @@ class Player: public Entity, public PowerUp{
         void checkCollisions();
         void die();
 
+
         void activate();
         void RandomActivate();
 
@@ -54,6 +58,8 @@ class Player: public Entity, public PowerUp{
 
         void setX(int);
         void setY(int);
+
+        int getRandPowerUps(); //getters to detect if >= 3
 
         EntityManager* getEM();
 };

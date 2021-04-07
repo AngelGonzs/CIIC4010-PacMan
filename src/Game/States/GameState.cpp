@@ -23,10 +23,6 @@ void GameState::tick() {
 		map->getPlayer()->setScore(0);
 	}
 
-	if(map->getPlayer()->getScore() >= 500){
-		map->getPlayer()->getEM()->setOver500(true);
-	}
-
 	//copying players location to EntityManager variable:
 	map->getPlayer()->getEM()->setPlayerX(map->getPlayer()->getX());
 	map->getPlayer()->getEM()->setPlayerY(map->getPlayer()->getY());
@@ -44,11 +40,14 @@ void GameState::render() {
 	ofDrawBitmapString(to_string(map->getPlayer()->getX()), ofGetWidth()/2 + 200 , ofGetHeight()/2 - 200);
 	ofDrawBitmapString(to_string(map->getPlayer()->getY()), ofGetWidth()/2 + 200 , ofGetHeight()/2 - 250);
 
-	if(map->getPlayer()->getEM()->getOver500()){
-		ofDrawBitmapString("true", ofGetWidth()/2 + 300, ofGetHeight()/2 );
-	}
-	else{ofDrawBitmapString("false", ofGetWidth()/2 + 300, ofGetHeight()/2 );}
+	ofDrawBitmapString(to_string(map->getPlayer()->getEM()->getPlayerX()), 100, 100);
+	ofDrawBitmapString(to_string(map->getPlayer()->getEM()->getPlayerY()), 100, 110);
+
+	//debugging powerups:
+	ofDrawBitmapString(to_string(map->getPlayer()->getRandPowerUps()), 50 , 50);
+
 }
+
 
 void GameState::keyPressed(int key){
 	map->keyPressed(key);

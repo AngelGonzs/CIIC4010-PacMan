@@ -197,7 +197,11 @@ void Player::checkCollisions(){
             
                 if(RandomGhost* rg = dynamic_cast<RandomGhost*>(entity)){
                 em->setRGDead(true);
-                RandomActivate(); }
+                if(randomPoweups < 3){
+                    randomPoweups += 1;
+                    powerups.push_back("rand");
+                    }
+                }
 
                 if(PeekABooGhost* pb = dynamic_cast<PeekABooGhost*>(entity)){
                 em->setPBDead(true); }
@@ -261,6 +265,13 @@ void Player::RandomActivate(){
     }
 }
 
+int Player::getRandPowerUps(){ return randomPoweups; }
+
+
 void Player::activate(){
-    //code here
+    if(powerups.back() == "rand"){
+        RandomActivate();
+        powerups.pop_back();
+        randomPoweups --;
+    }
 }

@@ -25,6 +25,7 @@ void RandomGhost::setY(int ye){
 void RandomGhost::replaceDot(int x, int y){
     bool xTrue;
     bool yTrue;
+    found = false;
     while(!found){
         int randInt = ofRandom(0 , em->entities.size());
         Entity* entity = em->entities[randInt];
@@ -37,10 +38,10 @@ void RandomGhost::replaceDot(int x, int y){
                 }
 
                 if(xTrue && yTrue){
-                    found = true;
                     setX(dot->getX());
                     setY(dot->getY());
                     dot->remove = true;
+                    found = true;
                 }
             }
         }

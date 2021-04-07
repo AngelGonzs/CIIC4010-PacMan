@@ -19,10 +19,6 @@ public:
 	void setPlayerY(int);
 	int getPlayerY();
 
-	void setOver500(bool);
-	//for testing purposes:
-	bool getOver500();
-
 	void setRGDead(bool);
 	bool getRGDead();
 
