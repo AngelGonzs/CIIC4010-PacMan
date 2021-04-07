@@ -46,6 +46,14 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     
 }
 void Player::tick(){
+
+    if(invincible){
+        if(currentPos > x+y + 200 || currentPos < x+y - 200){
+            invincible = false;
+            alpha = 255;
+        }
+    }
+
     canMove = true;
     checkCollisions();
     if(canMove){
@@ -67,7 +75,7 @@ void Player::tick(){
 
 
 void Player::render(){
-    ofSetColor(256,256,256);
+    ofSetColor(255, alpha);
     // ofDrawRectangle(getBounds());
     if(facing == UP){
         walkUp->getCurrentFrame().draw(x, y, width, height);
@@ -197,14 +205,16 @@ void Player::checkCollisions(){
             
                 if(RandomGhost* rg = dynamic_cast<RandomGhost*>(entity)){
                 em->setRGDead(true);
-                if(randomPoweups < 3){
-                    randomPoweups += 1;
+                if(randomPowerups < 3){
+                    randomPowerups += 1;
                     powerups.push_back("rand");
                     }
                 }
 
                 if(PeekABooGhost* pb = dynamic_cast<PeekABooGhost*>(entity)){
-                em->setPBDead(true); }
+                powerups.push_back("inv");
+                invPowerups++; 
+                }
                 
             }
             else{ die(); }
@@ -265,13 +275,32 @@ void Player::RandomActivate(){
     }
 }
 
-int Player::getRandPowerUps(){ return randomPoweups; }
+int Player::getRandPowerUps(){ return randomPowerups; }
+
+void Player::InvisibleActivate(){
+    /*when starting, alpha = 255 (turns invisible)
+    then, when the player moves a certain amount of pixels,
+    alpha will be 0 and invincible will be false*/
+    invincible = true;
+    alpha = 0; 
+    currentPos = x + y; 
+
+}
+
+int Player::getInvPowerUps(){ return invPowerups; }
 
 
 void Player::activate(){
-    if(powerups.back() == "rand"){
-        RandomActivate();
-        powerups.pop_back();
-        randomPoweups --;
+    if(powerups.size() > 0){
+        if(powerups.back() == "rand"){
+            RandomActivate();
+            powerups.pop_back();
+            randomPowerups--;
+        }
+        if(powerups.back() == "inv"){
+            InvisibleActivate();
+            powerups.pop_back();
+            invPowerups--;
+        }
     }
 }

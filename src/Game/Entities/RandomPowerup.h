@@ -1,3 +1,4 @@
+#pragma once
 #include "Powerup.h"
 
 class RandomPowerup: public PowerUp{

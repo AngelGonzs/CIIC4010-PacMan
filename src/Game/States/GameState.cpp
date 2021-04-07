@@ -45,6 +45,7 @@ void GameState::render() {
 
 	//debugging powerups:
 	ofDrawBitmapString(to_string(map->getPlayer()->getRandPowerUps()), 50 , 50);
+	ofDrawBitmapString(to_string(map->getPlayer()->getInvPowerUps()), 50 , 60);
 
 }
 
