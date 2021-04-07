@@ -18,11 +18,12 @@ void PeekABooGhost::render(){
     int xP = em->getPlayerX();
     int yP = em->getPlayerY();
     findPlayer(xP,yP);
-    ofSetColor(255, getAlpha());
     
     if(killable){
+        ofSetColor(255, getAlpha());
         killableAnim->getCurrentFrame().draw(x,y,width,height);
     }else{
+        ofSetColor(255, getAlpha());
         sprite.draw(x,y,width, height);
     }
 }

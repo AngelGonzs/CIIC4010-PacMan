@@ -66,6 +66,7 @@ void Ghost::tick(){
 }
 
 void Ghost::render(){
+    ofSetColor(255);
     if(killable){
         killableAnim->getCurrentFrame().draw(x,y,width,height);
     }else{
