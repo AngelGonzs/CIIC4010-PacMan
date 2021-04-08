@@ -36,6 +36,9 @@ class Player: public Entity, public PowerUp{
         Animation *walkRight;
         EntityManager* em;
 
+        ofImage loader;
+        ofImage randPow;
+
     public:
         Player(int, int, int , int, EntityManager*);
         ~Player();

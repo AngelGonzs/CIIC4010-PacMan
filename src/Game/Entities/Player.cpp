@@ -87,7 +87,32 @@ void Player::render(){
     }else if(facing == RIGHT){
         walkRight->getCurrentFrame().draw(x, y, width, height);
     }
+
+    ofSetColor(255);
+    loader.load("images/Background.png");
+    randPow.cropFrom(loader, 569, 52, 16,16);
+
+    
+    for(unsigned int i = 0; i<randomPowerups; i++){
+        randPow.draw(ofGetWidth()/2 + 25*i +340, 115, 16,16);
+    }
     ofSetColor(256, 0, 0);
+    //debugging invincible (runtime):
+    if(invincible){
+        ofDrawBitmapString("invi: true", ofGetWidth()/2 + 100, 40);
+    }
+    else{
+        ofDrawBitmapString("invi: false", ofGetWidth()/2 + 100, 40);
+    }
+
+    if(powerups.size() > 0){ 
+        ofDrawBitmapString("Next Powerup: " + powerups.back(), ofGetWidth()/2 + 320, 75);
+        ofDrawBitmapString("PowerUps:Available: ", ofGetWidth()/2 + 320, 95);
+    }
+    else ofDrawBitmapString("No PowerUps available atm", ofGetWidth()/2 + 320, 75);
+
+
+
     ofDrawBitmapString("Health: ", ofGetWidth()/2 + 100, 50);
 
     for(unsigned int i=0; i<health; i++){
@@ -217,7 +242,11 @@ void Player::checkCollisions(){
                 }
                 
             }
-            else{ die(); }
+            else{ 
+                if(!invincible){
+                    die(); 
+                }
+            }
         }
     }
 
