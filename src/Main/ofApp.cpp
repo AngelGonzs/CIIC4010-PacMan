@@ -33,6 +33,13 @@ void ofApp::update(){
 			}
 			else if(currentState->getNextState() == "Pause"){
 				currentState = pauseState;
+			    currentState->reset();
+                if(currentState->getNextState() == "Game"){
+				    currentState = gameState;
+			    }
+				else if(currentState->getNextState() == "over"){
+					currentState = gameOverState;
+				}
 			}
 			currentState->reset();
 		}
