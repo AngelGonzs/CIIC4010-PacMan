@@ -38,6 +38,7 @@ class Player: public Entity, public PowerUp{
 
         ofImage loader;
         ofImage randPow;
+        ofImage infLoader;
 
     public:
         Player(int, int, int , int, EntityManager*);

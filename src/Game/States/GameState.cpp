@@ -35,18 +35,6 @@ void GameState::tick() {
 
 void GameState::render() {
 	map->render();
-	const int maxim = map->getPlayer()->getMaxScore();
-	ofDrawBitmapString("Max Score: " + to_string(maxim), ofGetWidth()/2, ofGetHeight()/2);
-	ofDrawBitmapString(to_string(map->getPlayer()->getX()), ofGetWidth()/2 + 200 , ofGetHeight()/2 - 200);
-	ofDrawBitmapString(to_string(map->getPlayer()->getY()), ofGetWidth()/2 + 200 , ofGetHeight()/2 - 250);
-
-	ofDrawBitmapString(to_string(map->getPlayer()->getEM()->getPlayerX()), 100, 100);
-	ofDrawBitmapString(to_string(map->getPlayer()->getEM()->getPlayerY()), 100, 110);
-
-	//debugging powerups:
-	ofDrawBitmapString(to_string(map->getPlayer()->getRandPowerUps()), 50 , 50);
-	ofDrawBitmapString(to_string(map->getPlayer()->getInvPowerUps()), 50 , 60);
-
 }
 
 

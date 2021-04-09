@@ -43,6 +43,8 @@ Player::Player(int x, int y, int width, int height, EntityManager* em) : Entity(
     walkRight = new Animation(1,rightAnimframes);
 
     this->em = em;
+    loader.load("images/Background.png");
+    infLoader.load("images/Infinity.png");
     
 }
 void Player::tick(){
@@ -89,21 +91,19 @@ void Player::render(){
     }
 
     ofSetColor(255);
-    loader.load("images/Background.png");
     randPow.cropFrom(loader, 569, 52, 16,16);
+
 
     
     for(unsigned int i = 0; i<randomPowerups; i++){
         randPow.draw(ofGetWidth()/2 + 25*i +340, 115, 16,16);
     }
+
+    if(invPowerups>0){
+        infLoader.draw(ofGetWidth()/2 + 360, 150, infLoader.getWidth(), infLoader.getHeight());
+    }
     ofSetColor(256, 0, 0);
-    //debugging invincible (runtime):
-    if(invincible){
-        ofDrawBitmapString("invi: true", ofGetWidth()/2 + 100, 40);
-    }
-    else{
-        ofDrawBitmapString("invi: false", ofGetWidth()/2 + 100, 40);
-    }
+
 
     if(powerups.size() > 0){ 
         ofDrawBitmapString("Next Powerup: " + powerups.back(), ofGetWidth()/2 + 320, 75);
