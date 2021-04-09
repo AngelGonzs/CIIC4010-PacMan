@@ -40,7 +40,11 @@ void GhostSpawner::tick(){
     }
 }
 
+//^Dead variables to detect when has the ghost been eaten^
 
+/*special ghosts were given a special color
+so that they can have a secure authentification
+and no errors when being spawned*/
 void GhostSpawner::spawnGhost(string color){
     if(color != "random" && color != "PeekABoo"){
         Ghost* g = new Ghost(x,y,width-2,height-2,sprite,em, color);

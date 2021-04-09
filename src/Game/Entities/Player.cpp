@@ -107,9 +107,9 @@ void Player::render(){
 
     if(powerups.size() > 0){ 
         ofDrawBitmapString("Next Powerup: " + powerups.back(), ofGetWidth()/2 + 320, 75);
-        ofDrawBitmapString("PowerUps:Available: ", ofGetWidth()/2 + 320, 95);
+        ofDrawBitmapString("PowerUps Available: ", ofGetWidth()/2 + 320, 95);
     }
-    else ofDrawBitmapString("No PowerUps available atm", ofGetWidth()/2 + 320, 75);
+    else ofDrawBitmapString("No PowerUps available", ofGetWidth()/2 + 320, 75);
 
 
 
@@ -147,6 +147,15 @@ void Player::keyPressed(int key){
         case ' ':
             activate();
             break;
+
+        case 'i':
+            invPowerups++;
+            powerups.push_back("inv");
+            break;
+        
+        case 'r':
+            randomPowerups++;
+            powerups.push_back("rand");
     }
 }
 
@@ -289,6 +298,11 @@ Player::~Player(){
     delete walkRight;
 }
 
+/*similar to RandomGhost, this function 
+swaps the target for a dot in the entities
+vector, but here there are no parameters thus 
+the player can be swapped for any dot regardless
+of distance*/
 void Player::RandomActivate(){
     bool finder = false;
     int randInt = ofRandom(0, em->entities.size());
